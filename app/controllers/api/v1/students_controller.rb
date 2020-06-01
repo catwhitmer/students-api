@@ -10,4 +10,17 @@ class Api::V1::StudentsController < ApplicationController
 
     render json: @student, status: 200
   end
+
+  def create
+    @student = Student.create(student_params)
+
+    render json: @student, status:200
+  end
+
+  def update 
+    @student = Student.find_by(params [:id])
+    @student.update(student_params)
+
+    render json: @student, status:200
+  end
 end
