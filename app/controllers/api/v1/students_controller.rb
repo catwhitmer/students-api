@@ -6,7 +6,7 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def show 
-    @student = Student.find_by(params [:id])
+    @student = Student.find_by(id: params[:id])
 
     render json: @student, status: 200
   end
@@ -18,14 +18,14 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def update 
-    @student = Student.find_by(params [:id])
+    @student = Student.find_by(id: params[:id])
     @student.update(student_params)
 
     render json: @student, status: 200
   end
 
   def destroy
-    @student = Student.find_by(params [:id])
+    @student = Student.find_by(id: params[:id])
     @student.delete
 
      render json: {student_id: @student.id}
