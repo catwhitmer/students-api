@@ -23,4 +23,18 @@ class Api::V1::StudentsController < ApplicationController
 
     render json: @student, status:200
   end
+
+  def destroy
+    @student = Student.find_by(params [:id])
+    @student.delete
+
+     render json: {student_id: @student.id}
+  end
+
+
+  private 
+
+  def student_params
+    params.require(:student).permit(:name, :house, :blood_status, :patronus)
+  end
 end
