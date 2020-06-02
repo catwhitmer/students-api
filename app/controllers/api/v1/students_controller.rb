@@ -6,7 +6,7 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def show 
-    @student = Student.find_by(id: params[:id])
+    set_student
 
     render json: @student, status: 200
   end
@@ -18,14 +18,14 @@ class Api::V1::StudentsController < ApplicationController
   end
 
   def update 
-    @student = Student.find_by(id: params[:id])
+    set_student
     @student.update(student_params)
 
     render json: @student, status: 200
   end
 
   def destroy
-    @student = Student.find_by(id: params[:id])
+    set_student
     @student.delete
 
      render json: {student_id: @student.id}
@@ -37,4 +37,9 @@ class Api::V1::StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:name, :house, :blood_status, :patronus)
   end
+
+  def set_student
+    @student = Student.find_by(id: params[:id])
+  end
+
 end
