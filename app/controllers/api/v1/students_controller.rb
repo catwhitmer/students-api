@@ -13,8 +13,11 @@ class Api::V1::StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
-
-    render json: @student, status: 200
+    if @student.save
+      render json: @student, status: 200
+    else
+      render json: { errors: @student.errors.full_messages }
+    end
   end
 
   def update 
