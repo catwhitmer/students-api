@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.string :house
       t.string :blood_status
       t.string :patronus
+      t.integer :teacher_id
 
       t.timestamps
     end

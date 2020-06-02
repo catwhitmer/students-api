@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2020_06_02_221701) do
     t.string "house"
     t.string "blood_status"
     t.string "patronus"
+    t.integer "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "teachers", force: :cascade do |t|
     t.string "name"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
