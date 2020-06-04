@@ -2,7 +2,7 @@ class Api::V1::StudentsController < ApplicationController
   def index
     @student = Student.all 
 
-    render json: @student, status: 200
+    render json: StudentSerializer.new(@student).serializable_hash, status: 200
   end
 
   def show 
