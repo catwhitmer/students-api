@@ -5,6 +5,7 @@ class Api::V1::StudentsController < ApplicationController
     render json: @student, status: 200
   end
 
+
   def show 
     set_student
 
